@@ -19,18 +19,19 @@ namespace GestionaraDonatorilorDeSange
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'donareSangeDBDataSet.Donatori' table. You can move, or remove it, as needed.
             this.donatoriTableAdapter.Fill(this.donareSangeDBDataSet.Donatori);
-
         }
 
         private void btnAddDonator_Click(object sender, EventArgs e)
         {
             string nume = txtAddNume.Text;
             string prenume = txtAddPrenume.Text;
-            int varsta = 0;
-            if (txtAddVarsta.Text != string.Empty)
-                varsta = int.Parse(txtAddVarsta.Text);
+            int varsta;
+            if (!int.TryParse(txtAddVarsta.Text, out varsta))
+            {
+                MessageBox.Show("Varsta trebuie sa fie un numar valid.", "Date invalide", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string dataNasterii = dtpAddData.Text;
             string email = txtAddEmail.Text;
             string adresa = txtAddAdresa.Text;
@@ -40,31 +41,31 @@ namespace GestionaraDonatorilorDeSange
             {
                 this.donatoriTableAdapter.AddDonator(nume, prenume, varsta, dataNasterii, email, adresa, grupaSanguina, rh);
                 this.donatoriTableAdapter.Fill(this.donareSangeDBDataSet.Donatori);
+                CleanTextBoxes();
             }
             else
             {
                 MessageBox.Show("Datele nu sunt corecte.", "Va rugam introduceti date valide.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            CleanTextBoxes();
         }
 
         private void CleanTextBoxes()
         {
-           txtAddNume.Text = string.Empty;
-           txtAddPrenume.Text = string.Empty;
-           txtAddVarsta.Text = string.Empty;
-           dtpAddData.Text = string.Empty;
-           txtAddEmail.Text = string.Empty;
-           txtAddAdresa.Text = string.Empty;
-           txtAddGrupaSanguina.Text = string.Empty;
-           txtAddRH.Text = string.Empty;
+            txtAddNume.Text = string.Empty;
+            txtAddPrenume.Text = string.Empty;
+            txtAddVarsta.Text = string.Empty;
+            dtpAddData.Text = string.Empty;
+            txtAddEmail.Text = string.Empty;
+            txtAddAdresa.Text = string.Empty;
+            txtAddGrupaSanguina.Text = string.Empty;
+            txtAddRH.Text = string.Empty;
         }
 
         private bool okDateDonator(string nume, string prenume, int varsta, string dataNasterii, string email, string adresa, string grupaSanguina, string rh)
         {
-            if (nume.Length == 0)
+            if (string.IsNullOrWhiteSpace(nume))
                 return false;
-            if (prenume.Length == 0) 
+            if (string.IsNullOrWhiteSpace(prenume))
                 return false;
             if (okVarsta(varsta) == false)
                 return false;
@@ -72,7 +73,7 @@ namespace GestionaraDonatorilorDeSange
                 return false;
             if (okEmail(email) == false)
                 return false;
-            if (adresa.Length == 0)
+            if (string.IsNullOrWhiteSpace(adresa))
                 return false;
             if (okGrupaSanguina(grupaSanguina) == false)
                 return false;

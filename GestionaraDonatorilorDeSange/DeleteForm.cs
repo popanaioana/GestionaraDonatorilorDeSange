@@ -19,14 +19,17 @@ namespace GestionaraDonatorilorDeSange
 
         private void DeleteForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'donareSangeDBDataSet1.Donatori' table. You can move, or remove it, as needed.
             this.donatoriTableAdapter.Fill(this.donareSangeDBDataSet1.Donatori);
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txtDeleteId.Text);
+            int id;
+            if (!int.TryParse(txtDeleteId.Text, out id) || id <= 0)
+            {
+                MessageBox.Show("Introduceti un ID valid.", "Date invalide", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.donatoriTableAdapter.deleteDonator(id);
             this.donatoriTableAdapter.Fill(this.donareSangeDBDataSet1.Donatori);
             txtDeleteId.Text = string.Empty;
