@@ -1,156 +1,107 @@
-# \# Blood Donor Management System
+#  Blood Donor Management System
+A Windows Forms application developed in C# for managing blood donor records.
+The application provides a simple interface for adding, searching, and deleting donors while storing their information in a SQL Server database. 
+# Features\- Add new blood donors
 
-# 
+ \- Validate donor information before insertion
 
-# A Windows Forms application developed in C# for managing blood donor records.
+ \- Search donors by blood type and Rh factor
 
-# 
+ \- Delete donors using their unique ID
 
-# The application provides a simple interface for adding, searching, and deleting donors while storing their information in a SQL Server database.
+ \- Display donor records in a structured table
 
-# 
+ \- Store and retrieve donor information using a database
 
-# \## Features
+# Technologies
 
-# 
+ \- C#
 
-# \- Add new blood donors
+ \- .NET Framework 4.7.2
 
-# \- Validate donor information before insertion
+ \- Windows Forms
 
-# \- Search donors by blood type and Rh factor
+ \- SQL Server LocalDB
 
-# \- Delete donors using their unique ID
+ \- Visual Studio
 
-# \- Display donor records in a structured table
+ \- ADO.NET / TableAdapters
 
-# \- Store and retrieve donor information using a database
+# Donor Information 
 
-# 
+ Each donor record contains:
 
-# \## Technologies
+ \- First name
 
-# 
+ \- Last name
 
-# \- C#
+ \- Age
 
-# \- .NET Framework 4.7.2
+ \- Date of birth
 
-# \- Windows Forms
+ \- Email address
 
-# \- SQL Server LocalDB
+ \- Address
 
-# \- Visual Studio
+ \- Blood type
 
-# \- ADO.NET / TableAdapters
+ \- Rh factor
 
-# 
+# Validation 
 
-# \## Donor Information
+ The application performs basic validation before adding donor information, including: 
 
-# 
+ \- Required fields
 
-# Each donor record contains:
+ \- Valid numeric age
 
-# 
+ \- Age between 18 and 120
 
-# \- First name
+ \- Basic email validation
 
-# \- Last name
+ \- Valid blood type (`O`, `A`, `B`, `AB`)
 
-# \- Age
+ \- Valid Rh factor (`+` or `-`)
+ 
+ Invalid input is handled without terminating the application.
 
-# \- Date of birth
+# Project Structure
 
-# \- Email address
+ \- `MainForm` – main navigation window
 
-# \- Address
+ \- `AddForm` – adds and validates new donors
 
-# \- Blood type
+ \- `SearchForm` – searches donors by blood type and Rh factor
 
-# \- Rh factor
+ \- `DeleteForm` – removes donors by ID
 
-# 
+ \- `DonareSangeDBDataSet` – database dataset and TableAdapter configuration 
 
-# \## Validation
+# Getting Started
 
-# 
+ Requirements
 
-# The application performs basic validation before adding donor information, including:
+ \- Windows
 
-# 
+ \- Visual Studio
 
-# \- Required fields
+ \- .NET Framework 4.7.2
 
-# \- Valid numeric age
+ \- SQL Server LocalDB 
 
-# \- Age between 18 and 120
+ Running the Application
 
-# \- Basic email validation
+ 1\. Clone the repository.
 
-# \- Valid blood type (`O`, `A`, `B`, `AB`)
+ 2\. Open the solution file in Visual Studio.
 
-# \- Valid Rh factor (`+` or `-`)
+ 3\. Make sure SQL Server LocalDB is available.
 
-# 
+ 4\. Build the solution.
 
-# Invalid input is handled without terminating the application.
+ 5\. Run the application from Visual Studio. 
 
-# 
+# Purpose 
 
-# \## Project Structure
-
-# 
-
-# \- `MainForm` – main navigation window
-
-# \- `AddForm` – adds and validates new donors
-
-# \- `SearchForm` – searches donors by blood type and Rh factor
-
-# \- `DeleteForm` – removes donors by ID
-
-# \- `DonareSangeDBDataSet` – database dataset and TableAdapter configuration
-
-# 
-
-# \## Getting Started
-
-# 
-
-# \### Requirements
-
-# 
-
-# \- Windows
-
-# \- Visual Studio
-
-# \- .NET Framework 4.7.2
-
-# \- SQL Server LocalDB
-
-# 
-
-# \### Running the Application
-
-# 
-
-# 1\. Clone the repository.
-
-# 2\. Open the solution file in Visual Studio.
-
-# 3\. Make sure SQL Server LocalDB is available.
-
-# 4\. Build the solution.
-
-# 5\. Run the application from Visual Studio.
-
-# 
-
-# \## Purpose
-
-# 
-
-# This project was developed as a learning project to practice C# desktop application development, Windows Forms, input validation, database operations, and CRUD-style functionality.
+This project was developed as a learning project to practice C# desktop application development, Windows Forms, input validation, database operations, and CRUD-style functionality.
 
